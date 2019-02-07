@@ -7,21 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F1A11D02208DC3E001CF2E4 /* GameZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1A11CE2208DB24001CF2E4 /* GameZoneView.swift */; };
+		1F5C226722075B5700088EA0 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C226622075B5700088EA0 /* CardView.swift */; };
+		1F5C226922075C5600088EA0 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C226822075C5600088EA0 /* Grid.swift */; };
 		1F60064E2201AA81000309FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F60064D2201AA81000309FA /* AppDelegate.swift */; };
-		1F6006502201AA81000309FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F60064F2201AA81000309FA /* ViewController.swift */; };
+		1F6006502201AA81000309FA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F60064F2201AA81000309FA /* GameViewController.swift */; };
 		1F6006532201AA81000309FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6006512201AA81000309FA /* Main.storyboard */; };
 		1F6006552201AA84000309FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F6006542201AA84000309FA /* Assets.xcassets */; };
 		1F6006582201AA84000309FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6006562201AA84000309FA /* LaunchScreen.storyboard */; };
+		1F6006632201BF6F000309FA /* GameMechanism.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6006622201BF6F000309FA /* GameMechanism.swift */; };
+		1F6006652201BF82000309FA /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6006642201BF82000309FA /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F1A11CE2208DB24001CF2E4 /* GameZoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameZoneView.swift; path = "/Users/Aleksandr/Desktop/Coding/Stanford/Programming project 2/The game SET/The game SET/GameZoneView.swift"; sourceTree = "<absolute>"; };
+		1F5C226622075B5700088EA0 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		1F5C226822075C5600088EA0 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		1F60064A2201AA81000309FA /* The game SET.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The game SET.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F60064D2201AA81000309FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1F60064F2201AA81000309FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1F60064F2201AA81000309FA /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		1F6006522201AA81000309FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F6006542201AA84000309FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F6006572201AA84000309FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F6006592201AA84000309FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F6006622201BF6F000309FA /* GameMechanism.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMechanism.swift; sourceTree = "<group>"; };
+		1F6006642201BF82000309FA /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +64,27 @@
 		1F60064C2201AA81000309FA /* The game SET */ = {
 			isa = PBXGroup;
 			children = (
-				1F60064D2201AA81000309FA /* AppDelegate.swift */,
-				1F60064F2201AA81000309FA /* ViewController.swift */,
+				1F1A11CE2208DB24001CF2E4 /* GameZoneView.swift */,
+				1F60064F2201AA81000309FA /* GameViewController.swift */,
+				1F5C226822075C5600088EA0 /* Grid.swift */,
+				1F5C226622075B5700088EA0 /* CardView.swift */,
+				1F6006642201BF82000309FA /* Card.swift */,
+				1F6006622201BF6F000309FA /* GameMechanism.swift */,
 				1F6006512201AA81000309FA /* Main.storyboard */,
-				1F6006542201AA84000309FA /* Assets.xcassets */,
-				1F6006562201AA84000309FA /* LaunchScreen.storyboard */,
+				1F60065F2201AAA1000309FA /* Supporting files */,
 				1F6006592201AA84000309FA /* Info.plist */,
 			);
 			path = "The game SET";
+			sourceTree = "<group>";
+		};
+		1F60065F2201AAA1000309FA /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				1F60064D2201AA81000309FA /* AppDelegate.swift */,
+				1F6006542201AA84000309FA /* Assets.xcassets */,
+				1F6006562201AA84000309FA /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +158,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F6006502201AA81000309FA /* ViewController.swift in Sources */,
+				1F1A11D02208DC3E001CF2E4 /* GameZoneView.swift in Sources */,
+				1F6006502201AA81000309FA /* GameViewController.swift in Sources */,
 				1F60064E2201AA81000309FA /* AppDelegate.swift in Sources */,
+				1F6006632201BF6F000309FA /* GameMechanism.swift in Sources */,
+				1F5C226722075B5700088EA0 /* CardView.swift in Sources */,
+				1F6006652201BF82000309FA /* Card.swift in Sources */,
+				1F5C226922075C5600088EA0 /* Grid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
