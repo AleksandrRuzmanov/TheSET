@@ -1,5 +1,5 @@
 //
-//  Grid.swift
+//  GameFieldGrid.swift
 //
 //  Created by CS193p Instructor.
 //  Copyright © 2017 Stanford University. All rights reserved.
@@ -12,11 +12,11 @@
 //
 //  How it lays the cells out is determined by the layout property:
 //  Layout can be done by (a) fixing the cell size
-//    (Grid will create as many rows and columns as will fit)
+//    (GameFieldGrid will create as many rows and columns as will fit)
 //  Or (b) fixing the number of rows and columns
-//    (Grid will make the cells as large as possible)
+//    (GameFieldGrid will make the cells as large as possible)
 //  Or (c) ensuring a certain aspect ratio (width vs. height) for each cell
-//    (Grid will make cellCount cells fit, making the cells as large as possible)
+//    (GameFieldGrid will make cellCount cells fit, making the cells as large as possible)
 //    (you must set the cellCount var for the aspectRatio layout to know what to do)
 //
 //  The bounding rectangle of a cell in the grid is obtained by subscript (e.g. grid[11] or grid[1,5]).
@@ -24,12 +24,12 @@
 //  Setting aspectRatio, dimensions or cellSize, may change the layout.
 //
 //  To use, simply employ the initializer to choose a layout strategy and set the frame.
-//  After creating a Grid, you can change the frame or layout strategy at any time
+//  After creating a GameFieldGrid, you can change the frame or layout strategy at any time
 //    (all other properties will immediately update).
 
 import UIKit
 
-struct Grid
+struct GameFieldGrid
 {
     enum Layout {
         case fixedCellSize(CGSize)

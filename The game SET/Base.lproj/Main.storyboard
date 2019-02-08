@@ -62,6 +62,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your score: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQg-bb-ZLL">
                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="30"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -97,7 +98,7 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ic-Hi-zfK" customClass="GameZoneView" customModule="The_game_SET" customModuleProvider="target">
+                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ic-Hi-zfK" customClass="GameFieldView" customModule="The_game_SET" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="76" width="382" height="532"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <gestureRecognizers/>
@@ -171,7 +172,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                 </variation>
                                                 <connections>
-                                                    <action selector="touchAdd3CardsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y96-qX-YV4"/>
+                                                    <action selector="touchAddThreeCardsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y96-qX-YV4"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6jX-II-YH5">
@@ -262,12 +263,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="add3CardsButton" destination="W00-2r-4OG" id="b7q-hG-19l"/>
+                        <outlet property="addThreeCardsButton" destination="W00-2r-4OG" id="b7q-hG-19l"/>
                         <outlet property="bannerLabel" destination="8Hh-on-gxk" id="uPH-69-zd5"/>
                         <outlet property="cheatButton" destination="5dG-bv-fRm" id="5TH-xM-ux6"/>
                         <outlet property="enemyEmotionLabel" destination="obJ-ay-051" id="NdG-Vj-cHP"/>
                         <outlet property="enemyScoreLabel" destination="XBA-Yc-cT4" id="BzS-7H-fyP"/>
-                        <outlet property="gameZoneView" destination="8Ic-Hi-zfK" id="Ndt-hJ-AU9"/>
+                        <outlet property="gameFieldView" destination="8Ic-Hi-zfK" id="Ndt-hJ-AU9"/>
                         <outlet property="newGameButton" destination="sgV-mO-vcx" id="fhi-PT-MG1"/>
                         <outlet property="player1Button" destination="16h-w6-43q" id="AYe-Bz-ezm"/>
                         <outlet property="player2Button" destination="xaz-b3-cvT" id="pRo-FQ-Gyg"/>

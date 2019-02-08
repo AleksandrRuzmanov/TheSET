@@ -1,5 +1,5 @@
 //
-//  GameZoneView.swift
+//  GameFieldView.swift
 //  The game SET
 //
 //  Created by Aleksandr on 03/02/2019.
@@ -11,7 +11,7 @@ import UIKit
 
 class GameFieldView: UIView {
     
-    private var grid = Grid(layout: Grid.Layout.aspectRatio(5/7))
+    private var grid = GameFieldGrid(layout: GameFieldGrid.Layout.aspectRatio(5/7))
     
     func place(cards: [Card]) {
         for view in self.subviews {
