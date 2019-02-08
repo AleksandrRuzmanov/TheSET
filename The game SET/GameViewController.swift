@@ -128,7 +128,7 @@ class GameViewController: UIViewController {
                         if cardView.card == card {
                             cheatButton.isEnabled = false
                             cardView.isHighlighted = true
-                            _ = Timer.scheduledTimer(withTimeInterval: TimeIntervals.displayingCheatDuration.getInterval(), repeats: false, block: {_ in
+                            _ = Timer.scheduledTimer(withTimeInterval: TimeIntervals.displayingCheatDuration.getInterval(), repeats: false, block: {[unowned self] _ in
                                 cardView.isHighlighted = false
                                 self.updateViewFromModel()
                             })
@@ -136,6 +136,8 @@ class GameViewController: UIViewController {
                     }
                 }
             }
+        } else {
+             updateViewFromModel()
         }
     }
     
