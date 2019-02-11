@@ -116,21 +116,19 @@ class GameLogic {
                 case 2:
                     card.isChosen = true
                     let cardsAreMatch = checkCardsSet(for: cards.filter{$0.isChosen})
-                    for chosenCard in cards.filter({$0.isChosen}) {
-                        chosenCard.isMatched = cardsAreMatch
+                    if cardsAreMatch {
+                        for chosenCard in cards.filter({$0.isChosen}) {
+                            chosenCard.isMatched = cardsAreMatch
+                        }
+                        let matchedCardsAmount = cards.filter({$0.isChosen && $0.isMatched}).count
+                        dealCards(amount: matchedCardsAmount)
+                    } else {
+                        for chosenCard in cards.filter({$0.isChosen}) {
+                            chosenCard.isChosen = false
+                        }
                     }
                     let points = cardsAreMatch ? (extraPointsForMatchedCards - userIndependentPenaltyPoints) : (-userActionPenaltyPointsCases.cardsAreNotMatched.getPenaltyPoints())
                     updateUserScore(with: points)
-                case 3:
-                    // if cards are matched then replace those cards with new cards
-                    let matchedCardsAmount = cards.filter({$0.isChosen && $0.isMatched}).count
-                    if matchedCardsAmount > 0 {
-                        dealCards(amount: matchedCardsAmount)
-                    }
-                    for chosenCard in cards.filter({$0.isChosen}) {
-                        chosenCard.isChosen = false
-                    }
-                    card.isChosen = true
                 default:
                     card.isChosen = true
                 }

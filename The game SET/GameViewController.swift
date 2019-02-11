@@ -12,15 +12,13 @@ class GameViewController: UIViewController {
     
     // Model initialization
     
-     private var game = GameLogic.init()
-    
+    private var game = GameLogic.init()
     
     
     
     // PvP mode buttons
     
     @IBAction private func touchPvPButton(_ sender: UIButton) {
-        startNewGame()
         pvpModeOn = true
     }
     @IBAction private func touchPlayer1Button(_ sender: UIButton) {
@@ -147,7 +145,6 @@ class GameViewController: UIViewController {
     // Main game visualization methods
 
     private func updateViewFromModel() {
-        
         setupGameField()
         scoreLabel.text = pvpModeOn ? "Player 1 score: \(game.firstPlayerScore)" : "Your score: \(game.firstPlayerScore)"
         enemyScoreLabel.text = pvpModeOn ? "Player 2 score: \(game.secondPlayerScore)" : "Enemy score: \(game.enemyScore)"
@@ -200,8 +197,12 @@ class GameViewController: UIViewController {
     }
     
     private func setupGameField() {
+        gameFieldView.superview?.bringSubviewToFront(gameFieldView)
+        gameFieldView.cardsInTheEndFrame = newGameButton.superview?.convert(newGameButton.frame, to: gameFieldView)
+        gameFieldView.deckOfCardsFrame = addThreeCardsButton.superview?.convert(addThreeCardsButton.frame, to: gameFieldView)
         gameFieldView.place(cards: game.cards.filter({$0.isOnTable}))
         for view in gameFieldView.subviews {
+            view.gestureRecognizers?.removeAll()
             let tapGestureRecogniser = UITapGestureRecognizer(target: self, action: #selector(choseCard(sender:)))
             view.addGestureRecognizer(tapGestureRecogniser)
         }
@@ -300,13 +301,14 @@ class GameViewController: UIViewController {
     }
 
     
-    // Main view lifecycle methods
+    // VC lifecycle methods
     
     @objc private  func orientationChanged() {
         updateViewFromModel()
     }
     
-    override func viewDidLoad() {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(orientationChanged), name:  Notification.Name("UIDeviceOrientationDidChangeNotification"), object: nil)
         startNewGame()
     }

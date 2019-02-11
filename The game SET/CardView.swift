@@ -10,7 +10,13 @@ import UIKit
 
 @IBDesignable class CardView: UIView {
     
-    var card: Card? 
+    var card: Card?
+    
+    var isFaceUp: Bool = false {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     
     var isHighlighted: Bool = false {
         didSet {
@@ -56,28 +62,35 @@ import UIKit
     }
     
     override func draw(_ rect: CGRect) {
+        self.backgroundColor = UIColor.clear
         let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: SizeRation.cornerRadiusToBoundsHeight * bounds.height)
         roundedRect.addClip()
-        if isHighlighted {
+        if isHighlighted && isFaceUp {
             ColorScheme.highlightedCard.getColor().setFill()
         } else {
-            UIColor.white.setFill()
-        }
-        roundedRect.fill()
-        if let cardForDrawing = card {
-            if cardForDrawing.isChosen {
-                if cardForDrawing.isMatched {
-                    ColorScheme.matchedCard.getColor().setStroke()
-                    roundedRect.lineWidth = SizeRation.borderWidthToBoundsWidth * roundedRect.bounds.width
-                    roundedRect.stroke()
-                } else {
-                    ColorScheme.chosenCard.getColor().setStroke()
-                    roundedRect.lineWidth = SizeRation.borderWidthToBoundsWidth * roundedRect.bounds.width
-                    roundedRect.stroke()
-                }
+            if isFaceUp {
+                ColorScheme.facedUpCard.getColor().setFill()
+            } else {
+                ColorScheme.facedDownCard.getColor().setFill()
             }
-            let symbolsPath = generatePath(for: cardForDrawing)
-            symbolsPath.stroke()
+        }
+            roundedRect.fill()
+        if isFaceUp {
+            if let cardForDrawing = card {
+                if cardForDrawing.isChosen {
+                    if cardForDrawing.isMatched {
+                        ColorScheme.matchedCard.getColor().setStroke()
+                        roundedRect.lineWidth = SizeRation.borderWidthToBoundsWidth * roundedRect.bounds.width
+                        roundedRect.stroke()
+                    } else {
+                        ColorScheme.chosenCard.getColor().setStroke()
+                        roundedRect.lineWidth = SizeRation.borderWidthToBoundsWidth * roundedRect.bounds.width
+                        roundedRect.stroke()
+                    }
+                }
+                let symbolsPath = generatePath(for: cardForDrawing)
+                symbolsPath.stroke()
+            }
         }
     }
 }
@@ -142,8 +155,9 @@ extension CardView {
     private enum ColorScheme {
         case matchedCard
         case chosenCard
-        case cardBackground
+        case facedUpCard
         case highlightedCard
+        case facedDownCard
         
         func getColor() -> UIColor {
             switch self {
@@ -151,10 +165,12 @@ extension CardView {
                 return #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1)
             case .chosenCard:
                 return #colorLiteral(red: 0.9977241158, green: 0.9840803742, blue: 0.003218021942, alpha: 1)
-            case .cardBackground:
+            case .facedUpCard:
                 return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             case .highlightedCard:
                 return #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1)
+            case .facedDownCard:
+                return #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
                 
             }
         }
