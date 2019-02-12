@@ -102,19 +102,18 @@ class GameLogic {
     }
     
     func chooseCard(_ card: Card) {
+        var amountOfChosenCards: Int {
+            return cards.filter{$0.isChosen}.count
+        }
         if card.isOnTable, !card.isMatched {
-            var amountOfChosenCards: Int {
-                return cards.filter{$0.isChosen}.count
-            }
             if card.isChosen, amountOfChosenCards < 3 {
                 card.isChosen = false
                 let penaltyPoints = -userActionPenaltyPointsCases.cancelledCardSelection.getPenaltyPoints()
                 updateUserScore(with: penaltyPoints)
                 
             } else {
-                switch amountOfChosenCards{
-                case 2:
-                    card.isChosen = true
+                card.isChosen = true
+                if amountOfChosenCards == 3 {
                     let cardsAreMatch = checkCardsSet(for: cards.filter{$0.isChosen})
                     if cardsAreMatch {
                         for chosenCard in cards.filter({$0.isChosen}) {
@@ -122,15 +121,12 @@ class GameLogic {
                         }
                         let matchedCardsAmount = cards.filter({$0.isChosen && $0.isMatched}).count
                         dealCards(amount: matchedCardsAmount)
-                    } else {
-                        for chosenCard in cards.filter({$0.isChosen}) {
-                            chosenCard.isChosen = false
-                        }
+                    }
+                    for chosenCard in cards.filter({$0.isChosen}) {
+                        chosenCard.isChosen = false
                     }
                     let points = cardsAreMatch ? (extraPointsForMatchedCards - userIndependentPenaltyPoints) : (-userActionPenaltyPointsCases.cardsAreNotMatched.getPenaltyPoints())
                     updateUserScore(with: points)
-                default:
-                    card.isChosen = true
                 }
             }
         }

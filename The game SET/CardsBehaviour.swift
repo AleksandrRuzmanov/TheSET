@@ -10,14 +10,37 @@ import UIKit
 
 class CardsBehaviour: UIDynamicBehavior {
     
+    override init() {
+        super.init()
+        addChildBehavior(collisionBehaviour)
+        addChildBehavior(itemBehaviour)
+    }
     
-    lazy var collisionBehaviour: UICollisionBehavior = {
+    convenience init(in animator: UIDynamicAnimator) {
+        self.init()
+        animator.addBehavior(self)
+    }
+    
+    func addItem(_ item: UIDynamicItem) {
+        collisionBehaviour.addItem(item)
+        itemBehaviour.addItem(item)
+        push(item)
+    }
+    
+    func removeItem(_ item: UIDynamicItem) {
+        collisionBehaviour.removeItem(item)
+        itemBehaviour.removeItem(item)
+    }
+    
+    
+    
+    private lazy var collisionBehaviour: UICollisionBehavior = {
         let behaviour = UICollisionBehavior()
         behaviour.translatesReferenceBoundsIntoBoundary = true
         return behaviour
     }()
     
-    lazy var itemBehaviour: UIDynamicItemBehavior = {
+    private lazy var itemBehaviour: UIDynamicItemBehavior = {
         let behaviour = UIDynamicItemBehavior()
         behaviour.allowsRotation = AnimationParameters.allowsRotation
         behaviour.elasticity = AnimationParameters.elasticity
@@ -33,28 +56,6 @@ class CardsBehaviour: UIDynamicBehavior {
             self.removeChildBehavior(pushBehaviour)
         }
         addChildBehavior(pushBehaviour)
-    }
-    
-    func addItem(_ item: UIDynamicItem) {
-        collisionBehaviour.addItem(item)
-        itemBehaviour.addItem(item)
-        push(item)
-    }
-    
-    func removeItem(_ item: UIDynamicItem) {
-        collisionBehaviour.removeItem(item)
-        itemBehaviour.removeItem(item)
-    }
-    
-    override init() {
-        super.init()
-        addChildBehavior(collisionBehaviour)
-        addChildBehavior(itemBehaviour)
-    }
-    
-    convenience init(in animator: UIDynamicAnimator) {
-        self.init()
-        animator.addBehavior(self)
     }
 }
 

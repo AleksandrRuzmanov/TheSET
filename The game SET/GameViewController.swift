@@ -115,6 +115,7 @@ class GameViewController: UIViewController {
         startEnemyThinking()
         game.startNewGame()
         game.setPlayer(number: 1)
+        gameFieldView.removeAllCards()
         updateViewFromModel()
     }
     
@@ -198,9 +199,9 @@ class GameViewController: UIViewController {
     
     private func setupGameField() {
         gameFieldView.superview?.bringSubviewToFront(gameFieldView)
-        gameFieldView.cardsInTheEndFrame = newGameButton.superview?.convert(newGameButton.frame, to: gameFieldView)
-        gameFieldView.deckOfCardsFrame = addThreeCardsButton.superview?.convert(addThreeCardsButton.frame, to: gameFieldView)
-        gameFieldView.place(cards: game.cards.filter({$0.isOnTable}))
+        gameFieldView.discardPileFrame = newGameButton.superview?.convert(newGameButton.frame, to: gameFieldView)
+        gameFieldView.deckFrame = addThreeCardsButton.superview?.convert(addThreeCardsButton.frame, to: gameFieldView)
+        gameFieldView.placeCards(game.cards.filter({$0.isOnTable}))
         for view in gameFieldView.subviews {
             view.gestureRecognizers?.removeAll()
             let tapGestureRecogniser = UITapGestureRecognizer(target: self, action: #selector(choseCard(sender:)))
@@ -269,6 +270,7 @@ class GameViewController: UIViewController {
     private var pvpModeOn = false {
         didSet {
             if pvpModeOn {
+                gameFieldView.removeAllCards()
                 game.startNewGame()
                 updateViewFromModel()
             }
