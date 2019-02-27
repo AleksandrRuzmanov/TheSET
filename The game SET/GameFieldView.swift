@@ -9,7 +9,7 @@
 
 import UIKit
 
-class GameFieldView: UIView {
+internal class GameFieldView: UIView {
     
     
     var deckFrame: CGRect?
@@ -167,16 +167,16 @@ class GameFieldView: UIView {
     private func rotateView(_ view: UIView, duration: Double, delay: Double, completionAction: (()->(Void))?=nil ) {
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: duration/3, delay: delay, options: .curveLinear, animations: {
             view.transform = view.transform.rotated(by: 2*CGFloat.pi/3)
-        }, completion: { finished in
-            if finished == UIViewAnimatingPosition.end {
+        }, completion: { animatingPosition in
+            if animatingPosition == UIViewAnimatingPosition.end {
                 UIViewPropertyAnimator.runningPropertyAnimator(withDuration: duration/3, delay: 0.0, options: .curveLinear, animations: {
                     view.transform = view.transform.rotated(by: 2*CGFloat.pi/3)
-                }, completion: { finished in
-                    if finished == UIViewAnimatingPosition.end {
+                }, completion: { animatingPosition in
+                    if animatingPosition == UIViewAnimatingPosition.end {
                         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: duration/3, delay: 0.0, options: .curveLinear, animations: {
                             view.transform = view.transform.rotated(by: 2*CGFloat.pi/3)
-                        }, completion: { finished in
-                            if finished == UIViewAnimatingPosition.end, let action = completionAction {
+                        }, completion: { animatingPosition in
+                            if animatingPosition == UIViewAnimatingPosition.end, let action = completionAction {
                                 action()
                             }
                         })
@@ -222,13 +222,13 @@ class GameFieldView: UIView {
 }
 
 
-extension CGPoint {
+internal extension CGPoint {
     func rounded() -> CGPoint {
         return CGPoint(x: self.x.rounded(), y: self.y.rounded())
     }
 }
 
-extension CGRect {
+internal extension CGRect {
     var center: CGPoint {
         return CGPoint(x: self.midX, y: self.midY)
     }

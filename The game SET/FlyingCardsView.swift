@@ -43,8 +43,8 @@ class FlyingCardsView: UIView {
                     UIViewPropertyAnimator.runningPropertyAnimator(withDuration: self.cardsMovingAnimationDuration, delay: 0.0, options: .curveEaseIn, animations: {
                         cardView.transform = CGAffineTransform.identity
                         cardView.frame = frame
-                    }, completion: { [unowned self] finished in
-                        if finished == UIViewAnimatingPosition.end {
+                    }, completion: { [unowned self] animatingPosition in
+                        if animatingPosition == UIViewAnimatingPosition.end {
                             UIView.transition(with: cardView, duration: self.cardsFlippingAnimationDuration, options: [UIView.AnimationOptions.transitionFlipFromLeft], animations: {
                                 cardView.isFaceUp = false
                             }, completion: { [unowned self] finished in
